@@ -1,4 +1,6 @@
-void	buff_line(char *line, int length)
+#include "minishell.h"
+
+void	b_line(char *line, int length)
 {
 	char	*buff_mem;
 
@@ -8,7 +10,7 @@ void	buff_line(char *line, int length)
 	line = ft_strcpy(ft_strnew(length), buff_mem);
 }
 
-char	*get_line(void)
+char	*g_line(void)
 {
 	char	*buf;
 	char	r;
@@ -34,7 +36,7 @@ char	*get_line(void)
 		if (i >= b_size)
 		{
 			b_size += b_size;
-			buff_line(buf, b_size);
+			b_line(buf, b_size);
 		}
 	}
 	return (NULL);
