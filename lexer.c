@@ -18,5 +18,4 @@ void			read_and_lex_data(t_proutil *util)
 	util->tokens = lex_line(&util->line);
 	if (stop(util->line))
 		exit(0);
-	parse_data(util);
 }

@@ -1,26 +1,30 @@
 #include "minishell.h"
+#include <stdio.h>
 
 void	erro_msg(char *s, char *msg);
 
-void	parse_data(t_proutil *utils)
+int		parse_data(t_proutil *utils)
 {
-	if (utils->line)
+	if (utils->tokens)
 	{
 		utils->cp_id = fork();
-		if(utils->cp_id == SUCCESS)
+		if(utils->cp_id == 0)
 		{
 			if (execvp(utils->tokens[0], utils->tokens) == ERROR)
 				erro_msg(utils->tokens[0], INVALID_COMMAND);
-			else if (utils->cp_id < 0)
+			exit(1);
+		}
+		else if (utils->cp_id < 0)
 				erro_msg(utils->tokens[0], FAILED_FORK);
-			else
+		else
+		{
+			do
 			{
-				while (!WIFEXITED(utils->status) && !WIFSIGNALED(utils->status))
-					utils->wp_id =
-					waitpid(utils->cp_id, &utils->status, WUNTRACED);
+				utils->wp_id =
+				waitpid(utils->cp_id, &utils->status, WUNTRACED);
 			}
+			while (!WIFEXITED(utils->status) && !WIFSIGNALED(utils->status));
 		}
 	}
-	else
-		return ;
+	return (utils->status);
 }

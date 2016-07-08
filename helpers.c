@@ -4,7 +4,7 @@ void	erro_msg(char *s, char *msg)
 {
 	write(2, s, ft_strlen(s));
 	write(2, msg, ft_strlen(msg));
-	exit(0);  
+	exit(ERROR);  
 }
 
 int		stop(char *s)

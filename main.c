@@ -10,12 +10,15 @@ int		main(void)
 {
 	t_proutil		tool_box;
 
-	tool_box.status = -1;
 	//init_shell();
-	while (tool_box.status)
+	write(1, "\033[32me2r4p7>\033[0m", 20);
+	read_and_lex_data(&tool_box);
+	parse_data(&tool_box);
+	while (1)
 	{
-		write(1, ">", 2);
+		write(1, "\033[32me2r4p7>\033[0m", 20);
 		read_and_lex_data(&tool_box);
+		parse_data(&tool_box);
 	}
 	return (0);
 }

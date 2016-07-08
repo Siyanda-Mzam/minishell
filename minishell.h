@@ -20,4 +20,4 @@ typedef struct		s_shell_processing_utility
 
 char				*g_line(void);
 void				read_and_lex_data(t_proutil *util);
-void				parse_data(t_proutil *utils);
+int					parse_data(t_proutil *utils);
