@@ -1,5 +1,4 @@
 #include "minishell.h"
-#include <stdio.h>
 
 void	erro_msg(char *s, char *msg);
 
@@ -18,12 +17,11 @@ int		parse_data(t_proutil *utils)
 				erro_msg(utils->tokens[0], FAILED_FORK);
 		else
 		{
-			do
+			while (!WIFEXITED(utils->status) && !WIFSIGNALED(utils->status));
 			{
 				utils->wp_id =
 				waitpid(utils->cp_id, &utils->status, WUNTRACED);
 			}
-			while (!WIFEXITED(utils->status) && !WIFSIGNALED(utils->status));
 		}
 	}
 	return (utils->status);
