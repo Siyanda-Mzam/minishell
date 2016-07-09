@@ -1,4 +1,4 @@
-#include "minishell.h"
+#include "../includes/minishell.h"
 
 int		ft_cd(const char *dir)
 {
@@ -16,6 +16,12 @@ int		ft_exit(const char *dir)
 	return (-1);
 }
 
+int		ft_echo(const char *s)
+{
+	if (!s)
+		return (-1);
+	return (write(1, s, ft_strlen(s)));
+}
 int		ft_unsetenv(const char *var)
 {
 	char	**ep;

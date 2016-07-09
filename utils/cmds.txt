@@ -1,6 +1,6 @@
 cd
 exit
 unsetenv
-env
 echo
+env
 setenv

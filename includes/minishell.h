@@ -2,7 +2,7 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
-#include "libft/libft.h"
+#include "../libft/libft.h"
 #include <fcntl.h>
 
 #define SUCCESS 0
@@ -36,6 +36,7 @@ void					read_and_lex_data(t_proutil *util);
 int						parse_data(t_proutil *utils);
 int						ft_cd(const char *dir);
 int						ft_exit(const char *dir);
+int						ft_echo(const char *s);
 int						ft_unsetenv(const char *var);
 int						ft_setenv(const char *key, const char *val,
 									int overwrite);
