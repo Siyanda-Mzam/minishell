@@ -23,7 +23,11 @@ int		parse_data(t_proutil *utils)
 	if (utils->tokens)
 	{
 		if ((!*is_builtin(utils, &i)) && i >= 0)
-			 return (utils->builtin.b_ptr[i](utils->tokens[1]));
+		{
+			if (*utils->tokens[1] == '~')
+				utils->tokens[1] = ft_strjoin(get_env("HOME"), (utils->tokens[1] + 1));
+			return (utils->builtin.b_ptr[i](utils->tokens[1]));
+		}
 		utils->cp_id = fork();
 		if (utils->cp_id < 0)
 				erro_msg(utils->tokens[0], FAILED_FORK);

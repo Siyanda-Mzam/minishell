@@ -17,7 +17,7 @@ NAME = minishell
 FLAG = -Wall -Wextra -g -Werror
 
 SRC = src/main.c src/lexer.c src/parse.c src/builtins.c utils/helpers.c \
-		utils/read_line.c
+		utils/read_line.c src/env.c
 
 RM = rm -f
 
